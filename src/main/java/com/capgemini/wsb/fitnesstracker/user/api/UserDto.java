@@ -1,13 +1,35 @@
 package com.capgemini.wsb.fitnesstracker.user.api;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 public class UserDto {
     private Long id;
+
+    @NotBlank(message = "First name is mandatory")
     private String firstName;
+
+    @NotBlank(message = "Last name is mandatory")
     private String lastName;
-    private LocalDate birthDate; // Pole birthDate
+
+    @NotNull(message = "Birth date is mandatory")
+    @Past(message = "Birth date must be a past date")
+    private LocalDate birthDate;
+
+    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Email should be valid")
     private String email;
+
+    public UserDto(Long id, String firstName, String lastName, LocalDate birthDate, String email) {
+
+    }
+
+    public UserDto() {
+
+    }
 
     // Gettery i settery
     public Long getId() { return id; }

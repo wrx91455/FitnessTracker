@@ -14,6 +14,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "trainings")
@@ -52,6 +53,10 @@ public class Training {
         this.activityType = activityType;
         this.distance = distance;
         this.averageSpeed = averageSpeed;
+    }
+
+    public Training(User user, Date parse, Date parse1, ActivityType activityType, double distance, double averageSpeed) {
+
     }
 
     // Getters and setters

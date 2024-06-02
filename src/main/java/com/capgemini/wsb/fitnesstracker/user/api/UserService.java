@@ -18,4 +18,5 @@ public interface UserService {
     void deleteUser(Long id);
 
     List<UserDto> findAllUsers();
+    List<UserDto> getAllSimpleUsers();
 }

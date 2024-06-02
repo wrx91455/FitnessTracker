@@ -4,10 +4,11 @@ import com.capgemini.wsb.fitnesstracker.training.api.TrainingDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/trainings")
+@RequestMapping("/v1/trainings")
 public class TrainingController {
 
     private final TrainingService trainingService;
@@ -28,13 +29,13 @@ public class TrainingController {
     }
 
     @PostMapping
-    public ResponseEntity<TrainingDto> createTraining(@RequestBody TrainingDto trainingDto) {
+    public ResponseEntity<TrainingDto> createTraining(@Valid @RequestBody TrainingDto trainingDto) {
         TrainingDto createdTraining = trainingService.createTraining(trainingDto);
         return ResponseEntity.ok(createdTraining);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TrainingDto> updateTraining(@PathVariable Long id, @RequestBody TrainingDto trainingDto) {
+    public ResponseEntity<TrainingDto> updateTraining(@PathVariable Long id, @Valid @RequestBody TrainingDto trainingDto) {
         TrainingDto updatedTraining = trainingService.updateTraining(id, trainingDto);
         return ResponseEntity.ok(updatedTraining);
     }

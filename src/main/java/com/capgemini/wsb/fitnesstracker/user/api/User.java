@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 
 import java.time.LocalDate;
+import java.time.temporal.TemporalAccessor;
 
 @Entity
 @Table(name = "users")
@@ -53,4 +54,8 @@ public class User {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public TemporalAccessor getBirthdate() {
+        return null;
+    }
 }

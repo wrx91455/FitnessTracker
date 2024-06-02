@@ -1,3 +1,4 @@
+
 package com.capgemini.wsb.fitnesstracker;
 
 import org.junit.jupiter.api.Tag;

@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toEntity(userDto);
         User savedUser = userRepository.save(user);
         return userMapper.toDto(savedUser);
+
     }
 
     @Override
@@ -77,6 +78,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll()
                 .stream()
                 .map(userMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserDto> getAllSimpleUsers() {
+        return userRepository.findAll().stream()
+                .map(user -> new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getBirthDate(), user.getEmail()))
                 .collect(Collectors.toList());
     }
 }
